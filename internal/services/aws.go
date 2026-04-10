@@ -46,6 +46,7 @@ func GetS3Client() (*s3.Client, error) {
 		if baseEndpoint != "" {
 			s3Client = s3.NewFromConfig(cfg, func(o *s3.Options) {
 				o.BaseEndpoint = aws.String(baseEndpoint)
+				o.UsePathStyle = true
 			})
 		} else {
 			s3Client = s3.NewFromConfig(cfg)
